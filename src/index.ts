@@ -9,21 +9,21 @@ import session from "express-session";
 import connectRedis from "connect-redis";
 import cors from "cors";
 import Redis from "ioredis";
-import { createConnection } from 'typeorm'
+import { createConnection } from "typeorm";
 import { User } from "./entities/User";
 import { Post } from "./entities/Post";
 
-
 const main = async () => {
   const conn = await createConnection({
-    type: 'postgres',
-    database: 'redit',
-    username: 'postgres',
-    password: 'postgres',
+    type: "postgres",
+    database: "redit",
+    username: "postgres",
+    password: "postgres",
     logging: true,
     synchronize: true,
-    entities: [Post, User]
-  })
+    entities: [Post, User],
+  });
+
   const app = express();
 
   const RedisStore = connectRedis(session);
